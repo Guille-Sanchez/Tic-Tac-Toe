@@ -1,0 +1,39 @@
+.square {
+  height: 80px;
+  width: 80px;
+  background-color: blueviolet;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.choices {
+  width: clamp(250px, 12vw, 300px);
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.cross {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-size: 80px;
+  font-weight: 900;
+  background-color: blue;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  font-size: 40px;
+  font-weight: 900;
+  background-color: brown;
+}
