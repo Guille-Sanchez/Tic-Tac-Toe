@@ -1,6 +1,7 @@
 import "./App.css";
 import Square from "./components/Square";
 import Choices from "./components/Choices";
+import { checkIfWinner } from "./checkIfWinner";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -18,33 +19,11 @@ function App() {
 
   useEffect(() => {
     let subscribed = true;
-    const wonCombinations = [
-      ["0", "1", "2"],
-      ["3", "4", "5"],
-      ["6", "7", "8"],
-      ["0", "3", "6"],
-      ["1", "4", "7"],
-      ["2", "5", "8"],
-      ["0", "4", "8"],
-      ["2", "4", "6"],
-    ];
-    if (subscribed) {
-      wonCombinations.forEach((array) => {
-        let count = 0;
-        array.forEach((number) => {
-          if (player1.position.includes(number)) {
-            count += 1;
-            if (count === 3) {
-              console.log("nice");
-            }
-          }
-        });
-      });
-    }
+    checkIfWinner(subscribed, player1, player2);
     return () => {
       subscribed = false;
     };
-  }, [player1.position, player2.position]);
+  }, [player1, player2]);
 
   return (
     <div className="App">

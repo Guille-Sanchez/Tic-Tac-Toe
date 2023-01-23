@@ -1,42 +1,15 @@
 import React, { useState } from "react";
 import "./styles.css";
-
-function filledSquare(
-  setSquareContent,
-  squareContent,
-  setPlayer1,
-  player1,
-  setPlayer2,
-  player2,
-  e
-) {
-  if (squareContent === "") {
-    if (player1.turn === true) {
-      setSquareContent(() => player1.value);
-      setPlayer1((prev) => ({
-        ...prev,
-        turn: false,
-        position: [...prev.position, e.target.id].sort(),
-      }));
-      setPlayer2((prev) => ({ ...prev, turn: true }));
-    } else {
-      setSquareContent(() => player2.value);
-      setPlayer1((prev) => ({ ...prev, turn: true }));
-      setPlayer2((prev) => ({
-        ...prev,
-        turn: false,
-        position: [...player2.position, e.target.id].sort(),
-      }));
-    }
-  }
-}
+import { filledSquare } from "./filledSquare";
 
 function Square({ setPlayer1, player1, setPlayer2, player2, id }) {
   const [squareContent, setSquareContent] = useState("");
 
   return (
     <div
-      className="square"
+      className={`square ${
+        squareContent === player1.value ? "cross" : "circle"
+      }`}
       onClick={(e) => {
         filledSquare(
           setSquareContent,
