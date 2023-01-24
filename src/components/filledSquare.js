@@ -13,6 +13,7 @@ export const filledSquare = (
       setPlayer1((prev) => ({
         ...prev,
         turn: false,
+        reset: false,
         position: [...prev.position, e.target.id].sort(),
       }));
       setPlayer2((prev) => ({ ...prev, turn: true }));
@@ -22,6 +23,7 @@ export const filledSquare = (
       setPlayer2((prev) => ({
         ...prev,
         turn: false,
+        reset: false,
         position: [...player2.position, e.target.id].sort(),
       }));
     }

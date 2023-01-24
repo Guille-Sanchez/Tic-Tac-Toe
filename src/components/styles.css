@@ -20,10 +20,49 @@
   align-items: center;
   font-size: 80px;
   font-weight: 900;
-  background-color: blue;
 }
 
 .circle {
   font-size: 40px;
-  background-color: brown;
+}
+
+.turn1 {
+  background-color: white;
+}
+
+.turn2 {
+  background-color: white;
+}
+
+.opacity {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  opacity: 0.3;
+  min-height: 100vh;
+  min-width: 100vw;
+  z-index: 1;
+}
+
+.winner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+
+  min-height: 100vh;
+  min-width: 100vw;
+  z-index: 2;
+}
+
+.container-winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150 px;
+  width: 300px;
+  background-color: aliceblue;
 }

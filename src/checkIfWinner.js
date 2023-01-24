@@ -1,4 +1,10 @@
-export const checkIfWinner = (subscribed, player1, player2) => {
+export const checkIfWinner = (
+  subscribed,
+  player1,
+  player2,
+  setPlayer1,
+  setPlayer2
+) => {
   const wonCombinations = [
     ["0", "1", "2"],
     ["3", "4", "5"],
@@ -17,14 +23,14 @@ export const checkIfWinner = (subscribed, player1, player2) => {
           if (player1.position.includes(number)) {
             count += 1;
             if (count === 3) {
-              console.log("nice 1");
+              setPlayer1((prev) => ({ ...prev, winner: true, reset: true }));
             }
           }
         } else {
           if (player2.position.includes(number)) {
             count += 1;
             if (count === 3) {
-              console.log("nice 2");
+              setPlayer2((prev) => ({ ...prev, winner: true, reset: true }));
             }
           }
         }
