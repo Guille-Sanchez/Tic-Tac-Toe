@@ -11,6 +11,7 @@ function App() {
     turn: true,
     position: [],
     winner: false,
+    draw: false,
     reset: false,
   });
   const [player2, setPlayer2] = useState({
@@ -18,13 +19,19 @@ function App() {
     turn: false,
     position: [],
     winner: false,
+    draw: false,
     reset: false,
   });
 
   useEffect(() => {
     let subscribed = true;
-    if (player1.winner === false && player2.winner === false) {
-      checkIfWinner(subscribed, player1, player2, setPlayer1, setPlayer2);
+    if (
+      player1.winner === false &&
+      player2.winner === false &&
+      player1.draw === false &&
+      subscribed
+    ) {
+      checkIfWinner(player1, player2, setPlayer1, setPlayer2);
     }
     return () => {
       subscribed = false;
@@ -33,6 +40,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{ color: "#F9FEFF" }}>Tic-Tac-Toe</h1>
       <div className="container">
         <CreateTicTacToe
           setPlayer1={setPlayer1}
@@ -42,10 +50,10 @@ function App() {
         />
       </div>
       <Choices turn1={player1.turn} turn2={player2.turn} />
-      {(player1.winner || player2.winner) && (
+      {(player1.winner || player2.winner || player1.draw) && (
         <WinnerBanner
-          winner1={player1.winner}
-          winner2={player2.winner}
+          player1={player1}
+          player2={player2}
           setPlayer1={setPlayer1}
           setPlayer2={setPlayer2}
         />
